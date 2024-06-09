@@ -1,0 +1,11 @@
+def main():
+    meal_cost = float(input())
+    tax = round(meal_cost * 0.05, 2)
+    tip = round(meal_cost * 0.18, 2)
+    grand_total = meal_cost + tax + tip
+
+    print(f"The tax is {tax}0 and the tip is {tip}0, making the total {grand_total}0" )
+   
+
+if __name__ == "__main__":
+    main()
