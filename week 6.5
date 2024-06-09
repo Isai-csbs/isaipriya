@@ -1,0 +1,33 @@
+def zip_lists(list1, list2):
+    zipped_list = []
+    for sublist1, sublist2 in zip(list1, list2):
+        zipped_list.append(sublist1 + sublist2)
+    return zipped_list
+
+
+m = int(input())
+
+
+n = int(input())
+
+
+list1 = []
+for _ in range(m):
+    row = []
+    for _ in range(n):
+        row.append(int(input()))
+    list1.append(row)
+
+
+list2 = []
+for _ in range(m):
+    row = []
+    for _ in range(n):
+        row.append(int(input()))
+    list2.append(row)
+
+
+zipped_list = zip_lists(list1, list2)
+
+
+print(zipped_list)
