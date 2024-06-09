@@ -1,0 +1,9 @@
+def is_eligible_to_donate_blood(age, weight):
+   return age >= 18 and weight > 40
+age = int(input(""))
+weight = int(input(""))
+eligible = is_eligible_to_donate_blood(age, weight)
+if eligible:
+    print("True")
+else:
+    print("False")
