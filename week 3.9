@@ -1,0 +1,5 @@
+chinese_zodiac='Dragon Snake Horse Sheep Monkey Rooster Dog Pig Rat Ox Tiger Hare'.split()
+def year_of_animal(year):
+    return chinese_zodiac[(year-2000)%12]
+year=int(input())
+print(f"{year} is the year of the {year_of_animal(year)}.")
