@@ -1,0 +1,13 @@
+def find_duplicate(nums):
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return num
+        seen.add(num)
+
+# Input
+l = input()
+nums = list(map(int, l.split()))
+
+# Output
+print(find_duplicate(nums))
