@@ -1,0 +1,14 @@
+def differenceSum(n):
+    num_str = str(n)
+   
+    sum_even = 0
+    sum_odd = 0
+   
+    for i in range(len(num_str)):
+        digit = int(num_str[i])
+        if i % 2 == 0:
+            sum_even += digit
+        else:
+            sum_odd += digit
+   
+    return abs(sum_even - sum_odd)
