@@ -1,0 +1,17 @@
+$1 = input().strip()
+
+s2 = input().strip()
+
+n = int(input().strip())
+
+common_chars = []
+
+for char in s1:
+
+if char in s2 and char not in common chars: common_chars.append(char)
+
+if len(common_chars) == n:
+
+break
+
+print(''.join(common_chars))
