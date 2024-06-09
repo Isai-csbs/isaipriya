@@ -1,0 +1,13 @@
+def count_ones_in_binary(number):
+    count = 0
+    while number > 0:
+        if number & 1:
+            count += 1
+        number >>= 1
+    return count
+number = int(input(""))
+if 0 <= number <= 15:
+    ones = count_ones_in_binary(number)
+    print(f"{ones}")
+else:
+    print(f"Invalid input: {number} is not between 0 and 15.")
