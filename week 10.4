@@ -1,0 +1,23 @@
+def bubbleSort(arr):
+    n = len(arr)
+    numSwaps = 0
+    
+    for i in range(n):
+        swapped = False
+        
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                numSwaps += 1
+                swapped = True
+                
+        if not swapped:
+            break
+    
+    print("List is sorted in", numSwaps, "swaps.")
+    print("First Element:", arr[0])
+    print("Last Element:", arr[-1])
+
+n = int(input().strip())
+arr = list(map(int, input().strip().split()))
+bubbleSort(arr)
