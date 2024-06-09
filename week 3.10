@@ -1,0 +1,8 @@
+a=float(input())
+x=abs(a)
+b=x/10
+c=b%10
+if(x>=10):
+    print(int(c))
+else:
+    print(-1)
