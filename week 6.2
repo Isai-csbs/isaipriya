@@ -1,0 +1,27 @@
+# Function to merge two arrays without duplicates
+def merge_arrays(arr1, arr2):
+    # Merge arrays
+    merged_array = arr1 + arr2
+    # Remove duplicates
+    merged_array = list(set(merged_array))
+    return merged_array
+
+# Input Format for array 1
+n1 = int(input())
+array1 = []
+for _ in range(n1):
+    array1.append(int(input()))
+
+# Input Format for array 2
+n2 = int(input())
+array2 = []
+for _ in range(n2):
+    array2.append(int(input()))
+
+# Output Format
+merged = merge_arrays(array1, array2)
+merged.sort()  # Sort the merged array
+for i in merged:
+    print(i, end=" ")
+    
+    
