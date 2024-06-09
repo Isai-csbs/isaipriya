@@ -1,0 +1,16 @@
+def safe_division():
+    try:
+        num1 = float(input())
+        num2 = float(input())
+
+        if num2 == 0:
+            print("Error: Cannot divide or modulo by zero.")
+            return
+
+        result = num1 / num2
+        print(f"{result}")
+
+    except ValueError:
+        print("Error: Non-numeric input provided.")
+
+safe_division()
