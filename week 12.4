@@ -1,0 +1,12 @@
+def find_unique_pairs(activities, k):
+    count = 0
+    for i in range(len(activities)):
+        for j in range(i+1, len(activities)):
+            if abs(activities[i] - activities[j]) == k:
+                count += 1
+    return count
+n = int(input())
+activities = list(map(int, input().split()))
+k = int(input())
+result = find_unique_pairs(activities, k)
+print(result)
