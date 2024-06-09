@@ -1,0 +1,9 @@
+def can_win_battle(weapon_count, soldier_count):
+     return weapon_count % 3 == 0 and soldier_count % 2 == 0
+weapon_count = int(input(""))
+soldier_count = int(input(""))
+can_win = can_win_battle(weapon_count, soldier_count)
+if can_win:
+    print("True")
+else:
+    print("False")
