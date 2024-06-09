@@ -1,0 +1,8 @@
+def get_output(x):
+    return 'CD'[x]
+x = int(input(""))
+if 0 <= x <= 1:
+    output = get_output(x)
+    print(f"{output}")
+else:
+    print("Invalid input. The value of x should be between 0 and 1.")
