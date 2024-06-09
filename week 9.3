@@ -1,0 +1,15 @@
+def is_abundant(num):
+    sum_of_divisors = 0
+    for i in range(1, num):
+        if num % i == 0:
+            sum_of_divisors += i
+    return sum_of_divisors > num
+
+def abundant(num):
+    if num <= 0:
+        return ("Invalid input")
+    elif is_abundant(num):
+        return ("Yes")
+    else:
+        return ("No")
+    
