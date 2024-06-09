@@ -1,0 +1,17 @@
+a=eval(input())
+if(a<=50):
+    a=a*2
+    print(format(a,'.2f'))
+elif(a<=100):
+    a=a*1.2
+    print(format(a,'.2f'))
+elif(a>=400 and a<600):
+    a=a*1.8
+    b=a*(15/100)
+    b=a+b
+    print(format(b,'.2f'))
+elif(a>600):
+    a=a*2.0
+    b=a*(15/100)
+    b=a+b
+    print(format(b,'.2f'))
