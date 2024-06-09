@@ -1,0 +1,8 @@
+try:
+    user_input = int(input())
+    if 1 <= user_input <= 100:
+        print("Valid input.")
+    else:
+        print("Error: Number out of allowed range")
+except ValueError:
+    print("Error: invalid literal for int()")
