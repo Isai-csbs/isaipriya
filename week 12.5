@@ -1,0 +1,10 @@
+X = int(input())
+shoe_sizes = list(map(int, input().split()))
+N = int(input())
+total_earnings = 0
+for _ in range(N):
+    size, price = map(int, input().split())
+    if size in shoe_sizes:
+        total_earnings += price
+        shoe_sizes.remove(size)
+print(total_earnings)
