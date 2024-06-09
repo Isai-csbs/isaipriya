@@ -1,0 +1,18 @@
+s=input()
+
+at=s.index('@')
+
+dot=s.index('.')
+
+username=s[:at]
+
+domain=s[at+1:dot]
+
+extension=s[dot+1:]
+
+print(extension)
+
+print(domain)
+
+print (username)
+
