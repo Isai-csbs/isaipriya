@@ -1,0 +1,10 @@
+try:
+    age = int(input().strip())
+    if age < 0:
+        print("Error: Please enter a valid age.")
+    else:
+        print(f"You are {age} years old.")
+except ValueError:
+    print("Error: Please enter a valid age.")
+except EOFError:
+    print("Error: Please enter a valid age.")
