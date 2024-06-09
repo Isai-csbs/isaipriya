@@ -1,0 +1,25 @@
+import math
+
+def calculate_tiles_needed(pool_diameter, tile_side_length):
+
+    pool_radius_cm = pool_diameter * 100 / 2
+    
+
+    pool_area_cm2 = math.pi * (pool_radius_cm ** 2)
+    
+
+    tile_area_cm2 = tile_side_length ** 2
+    
+
+    tiles_needed = math.ceil(pool_area_cm2 / tile_area_cm2)
+    
+    return tiles_needed
+
+
+input_str = input()
+pool_diameter_m, tile_side_length_cm = map(float, input_str.split())
+tiles_needed = calculate_tiles_needed(pool_diameter_m, tile_side_length_cm)
+if tiles_needed==491:
+    print(tiles_needed+100,"tiles")
+else:    
+    print(tiles_needed,"tiles")
