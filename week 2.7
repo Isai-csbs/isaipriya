@@ -1,0 +1,15 @@
+def calculate_savings_account_balance(principal, interest_rate, years):
+    balance = principal
+    for year in range(1, years + 1):
+        interest = balance * interest_rate / 100
+        balance += interest
+        balance = round(balance, 2)
+    return balance
+def main():
+    principal = float(input())
+    interest_rate = 4
+    for years in [1, 2, 3]:
+        balance = calculate_savings_account_balance(principal, interest_rate, years)
+        print(f"Balance as of end of Year {years}: $""%.2f."%balance)
+if __name__ == "__main__":
+    main()
