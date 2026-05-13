@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Forecast Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">💼 Financial Forecast</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="financial-forecast.html" class="active">💰 Forecast Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>💰 Financial Forecast Calculator</h1>
+            <p>Enter your expense data to predict future monthly expenses</p>
+        </header>
+
+        <main>
+            <section class="calculator-section">
+                <div class="calculator-container">
+                    <div class="input-panel">
+                        <h2>📊 Enter Your Financial Data</h2>
+                        
+                        <!-- Monthly Expenses Input -->
+                        <div class="form-group">
+                            <label for="monthlyExpenses">Monthly Expenses (comma-separated)</label>
+                            <textarea id="monthlyExpenses" placeholder="e.g., 1500, 1550, 1600, 1650, 1700" rows="4"></textarea>
+                            <small>Enter at least 3 months of data for accurate forecasting</small>
+                        </div>
+
+                        <!-- Forecast Months Input -->
+                        <div class="form-group">
+                            <label for="forecastMonths">Number of Months to Forecast</label>
+                            <select id="forecastMonths">
+                                <option value="1">1 Month</option>
+                                <option value="3" selected>3 Months</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months</option>
+                            </select>
+                        </div>
+
+                        <!-- Confidence Level -->
+                        <div class="form-group">
+                            <label for="confidenceLevel">Confidence Level</label>
+                            <select id="confidenceLevel">
+                                <option value="80">80% (Moderate Risk)</option>
+                                <option value="90">90% (Balanced)</option>
+                                <option value="95" selected>95% (Conservative)</option>
+                            </select>
+                        </div>
+
+                        <!-- Trend Factor -->
+                        <div class="form-group">
+                            <label for="trendFactor">Growth/Decline Factor</label>
+                            <div class="trend-input">
+                                <input type="range" id="trendFactor" min="-10" max="10" value="0" step="0.5">
+                                <span id="trendValue">0%</span>
+                            </div>
+                            <small>Positive = increasing expenses, Negative = decreasing expenses</small>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="button-group">
+                            <button id="calculateBtn" class="btn btn-primary">🔮 Calculate Forecast</button>
+                            <button id="resetBtn" class="btn btn-secondary">↻ Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="results-panel" id="resultsPanel" style="display: none;">
+                        <h2>📈 Forecast Results</h2>
+                        
+                        <!-- Key Metrics -->
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <h3>Average Historical</h3>
+                                <p class="metric-value">$<span id="avgHistorical">0</span></p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Trend Rate</h3>
+                                <p class="metric-value"><span id="trendRate">0</span>%</p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Forecast Average</h3>
+                                <p class="metric-value">$<span id="avgForecast">0</span></p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Variance</h3>
+                                <p class="metric-value">±$<span id="variance">0</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Forecast Table -->
+                        <div class="forecast-table-container">
+                            <h3>Detailed Forecast</h3>
+                            <table id="forecastTable" class="forecast-table">
+                                <thead>
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Forecast</th>
+                                        <th>Lower Bound</th>
+                                        <th>Upper Bound</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chart Section -->
+            <section class="chart-section" id="chartSection" style="display: none;">
+                <div class="chart-container">
+                    <h2>📊 Historical vs Forecast Visualization</h2>
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Insights Section -->
+            <section class="insights-section" id="insightsSection" style="display: none;">
+                <h2>💡 Financial Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>📌 Forecast Summary</h3>
+                        <p id="summaryText"></p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>💰 Budget Recommendation</h3>
+                        <p id="budgetText"></p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>⚠️ Risk Analysis</h3>
+                        <p id="riskText"></p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>📈 Action Items</h3>
+                        <p id="actionText"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sample Data Section -->
+            <section class="sample-section">
+                <h2>🎯 Sample Data to Try</h2>
+                <div class="sample-buttons">
+                    <button class="sample-btn" onclick="loadSampleData('conservative')">📊 Conservative Scenario</button>
+                    <button class="sample-btn" onclick="loadSampleData('growth')">📈 Growth Scenario</button>
+                    <button class="sample-btn" onclick="loadSampleData('decline')">📉 Declining Scenario</button>
+                    <button class="sample-btn" onclick="loadSampleData('volatile')">⚡ Volatile Scenario</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Financial Forecast Project | <a href="https://github.com/Isai-csbs/isaipriya">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="financial-forecast.js"></script>
+</body>
+</html>
