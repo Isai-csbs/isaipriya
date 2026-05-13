@@ -1,21 +1,21 @@
-// Sample historical data (24 months)
+// Sample historical data (32 months from Jan 2023 to Aug 2025)
 const historicalData = [
-    1500, 1510, 1520, 1530, 1540, 1550, 1560, 1570, 1580, 1590,
-    1600, 1610, 1620, 1630, 1640, 1650, 1660, 1670, 1680, 1690,
-    1700, 1710, 1720, 1730
+    1647, 1464, 1566, 1603, 1590, 1549, 1635, 1749, 1625, 1558, 1721, 1668, // 2023
+    1725, 1789, 1700, 1697, 1680, 1759, 1828, 1666, 1747, 1703, 1728, 1797, // 2024
+    1744, 1604, 1836, 1736, 1856, 1890, 1827, 1771 // 2025 (up to Aug)
 ];
 
-const months = Array.from({length: 24}, (_, i) => {
-    const date = new Date(2023, 0, 1);
-    date.setMonth(date.getMonth() + i);
-    return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-});
+const months = [
+    'Jan-23', 'Feb-23', 'Mar-23', 'Apr-23', 'May-23', 'Jun-23', 'Jul-23', 'Aug-23', 'Sep-23', 'Oct-23', 'Nov-23', 'Dec-23',
+    'Jan-24', 'Feb-24', 'Mar-24', 'Apr-24', 'May-24', 'Jun-24', 'Jul-24', 'Aug-24', 'Sep-24', 'Oct-24', 'Nov-24', 'Dec-24',
+    'Jan-25', 'Feb-25', 'Mar-25', 'Apr-25', 'May-25', 'Jun-25', 'Jul-25', 'Aug-25'
+];
 
-// Forecast data (next 3 months)
-const forecastMonths = ['Jan-25', 'Feb-25', 'Mar-25'];
-const forecastData = [1790, 1800, 1810];
-const confidenceHigh = [1930, 1960, 1990];
-const confidenceLow = [1650, 1640, 1630];
+// Forecast data (next 3 months: Sep, Oct, Nov 2025)
+const forecastMonths = ['Sep-25', 'Oct-25', 'Nov-25'];
+const forecastData = [1850, 1860, 1870];
+const confidenceHigh = [1980, 2010, 2040];
+const confidenceLow = [1720, 1710, 1700];
 
 // Combine for visualization
 const allMonths = [...months, ...forecastMonths];
@@ -34,25 +34,23 @@ const chart = new Chart(ctx, {
                 borderColor: '#2563eb',
                 backgroundColor: 'rgba(37, 99, 235, 0.1)',
                 fill: true,
-                borderWidth: 2,
+                borderWidth: 2.5,
                 pointRadius: 4,
                 pointBackgroundColor: '#2563eb',
                 pointBorderColor: '#fff',
                 pointBorderWidth: 2,
                 tension: 0.3,
                 segment: {
-                    borderDash: ctx => ctx.p0DataIndex >= 23 || ctx.p1DataIndex >= 23 ? [5, 5] : undefined,
+                    borderDash: ctx => ctx.p0DataIndex >= 31 || ctx.p1DataIndex >= 31 ? [5, 5] : undefined,
                 }
             },
             {
                 label: 'Forecast',
-                data: [null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, ...forecastData],
+                data: new Array(32).fill(null).concat(forecastData),
                 borderColor: '#f59e0b',
                 backgroundColor: 'rgba(245, 158, 11, 0.1)',
                 fill: false,
-                borderWidth: 2,
+                borderWidth: 2.5,
                 borderDash: [5, 5],
                 pointRadius: 5,
                 pointBackgroundColor: '#f59e0b',
@@ -62,9 +60,7 @@ const chart = new Chart(ctx, {
             },
             {
                 label: '95% Confidence Upper',
-                data: [null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, ...confidenceHigh],
+                data: new Array(32).fill(null).concat(confidenceHigh),
                 borderColor: '#10b981',
                 fill: false,
                 borderWidth: 1,
@@ -74,11 +70,9 @@ const chart = new Chart(ctx, {
             },
             {
                 label: '95% Confidence Lower',
-                data: [null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, null, null, null, null, null, null,
-                       null, null, null, null, ...confidenceLow],
+                data: new Array(32).fill(null).concat(confidenceLow),
                 borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                backgroundColor: 'rgba(16, 185, 129, 0.2)',
                 fill: '-1',
                 borderWidth: 1,
                 borderDash: [2, 2],

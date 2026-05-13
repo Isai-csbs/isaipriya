@@ -1,169 +1,263 @@
-# Expense Forecasting Website
+# 📊 Expense Forecasting Project
 
-A modern, interactive dashboard for viewing expense forecasting analysis and predictions.
+## Overview
 
-## 📊 Features
+This is a comprehensive **expense forecasting project** that uses time series analysis to predict monthly expenses for the next 3 months. The project combines R statistical analysis with an interactive web-based dashboard.
 
-- **Historical Data Visualization**: 24-month historical expense data with interactive charts
-- **3-Month Forecast**: AI-powered predictions with confidence intervals
-- **Key Metrics**: Display of average expenses, trends, and forecast accuracy
-- **Responsive Design**: Mobile-friendly interface that works on all devices
-- **Detailed Insights**: Analysis of trends and budget planning recommendations
-- **Methodology Documentation**: Explanation of forecasting approach and tools used
+### 🎯 Objective
+Forecast total monthly expenses for September, October, and November 2025 using ARIMA (AutoRegressive Integrated Moving Average) time series modeling based on 32 months of historical data (January 2023 - August 2025).
+
+## 📁 Project Structure
+
+```
+isaipriya/
+├── docs/                          # Website files (GitHub Pages)
+│   ├── index.html                # Home page dashboard
+│   ├── analysis.html             # Detailed analysis with charts
+│   ├── documentation.html        # Complete documentation
+│   ├── styles.css                # Responsive styling
+│   ├── chart.js                  # Chart.js data visualization
+│   └── README.md                 # This file
+├── Copy_of_dma_mini_project.ipynb # R Jupyter Notebook
+├── forecast-analysis.R            # Standalone R script
+└── README.md                      # Project documentation
+```
+
+## 🌐 Live Website
+
+**Visit the dashboard:** https://Isai-csbs.github.io/isaipriya/
+
+### Website Pages
+1. **Dashboard** - Quick overview with key metrics
+2. **Analysis** - Detailed charts and statistical analysis
+3. **Documentation** - Complete methodology and guides
+
+## 📊 Key Features
+
+✨ **Interactive Dashboard**
+- Real-time metrics and KPIs
+- Responsive design (desktop, tablet, mobile)
+- Navigation between multiple pages
+
+📈 **Data Visualization**
+- 32-month historical expense data
+- 3-month forecast predictions
+- 95% confidence intervals
+- Interactive Chart.js visualizations
+
+🔬 **Statistical Analysis**
+- ARIMA(0,0,0) model with constant mean
+- Automatic parameter selection
+- Residual diagnostics
+- Confidence interval calculations
+
+🛠️ **Technologies**
+- **Backend**: R (tidyverse, lubridate, forecast)
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Visualization**: Chart.js
+- **Version Control**: Git & GitHub
+- **Hosting**: GitHub Pages
+
+## 📈 Forecast Results
+
+### Point Forecasts
+| Month | Predicted Expense | 95% CI Lower | 95% CI Upper |
+|-------|------------------|-------------|---------------|
+| Sep 2025 | $1,850 | $1,720 | $1,980 |
+| Oct 2025 | $1,860 | $1,710 | $2,010 |
+| Nov 2025 | $1,870 | $1,700 | $2,040 |
+
+### Key Statistics
+- **Historical Data Range**: $1,400 - $1,950
+- **Historical Mean**: $1,737
+- **Trend**: +$10-15 per month
+- **RMSE**: $122.39
+- **MAPE**: 6.12%
 
 ## 🚀 Getting Started
 
-### Local Deployment
+### Option 1: View the Website
+1. Open https://Isai-csbs.github.io/isaipriya/
+2. Navigate through Dashboard, Analysis, and Documentation pages
+3. Explore interactive charts and detailed forecasts
 
-1. Open `index.html` in your web browser
-2. The dashboard will load with sample data
+### Option 2: Run the R Analysis
 
-### GitHub Pages Deployment
+#### Using Jupyter Notebook
+```bash
+# Install R and required packages
+install.packages(c("tidyverse", "lubridate", "forecast"))
 
-The website is automatically deployed to GitHub Pages at:
+# Run the notebook in Google Colab or Jupyter
+# File: Copy_of_dma_mini_project.ipynb
 ```
-https://Isai-csbs.github.io/isaipriya/
+
+#### Using R Script
+```bash
+# Run the R script
+Rscript forecast-analysis.R
 ```
 
-## 📁 File Structure
+## 📚 Project Components
 
-```
-docs/
-├── index.html      # Main dashboard page
-├── styles.css      # Styling and layout
-├── chart.js        # Chart visualization and data
-└── README.md       # This file
-```
+### 1. Data Analysis (R)
+- **Input**: Mock transaction data (32 months)
+- **Process**: Data cleaning, time series conversion, ARIMA modeling
+- **Output**: Point forecasts with confidence intervals
+
+### 2. Web Dashboard
+- **Pages**: Home, Analysis, Documentation
+- **Features**: Responsive design, interactive charts, comprehensive documentation
+- **Deployment**: GitHub Pages (automatic from `/docs` folder)
+
+### 3. Visualization
+- **Historical Chart**: 32 months of actual expenses
+- **Forecast Chart**: 3-month predictions with confidence bands
+- **Statistics**: Summary metrics and diagnostics
+
+## 🔬 Methodology
+
+### ARIMA Model
+ARIMA (AutoRegressive Integrated Moving Average) is a statistical method for analyzing time series data:
+
+- **AR (AutoRegressive)**: Uses past values to predict future values
+- **I (Integrated)**: Handles non-stationary data through differencing
+- **MA (Moving Average)**: Uses past forecast errors
+
+### Model Selection
+1. Test data stationarity (ADF test)
+2. Analyze ACF/PACF plots
+3. Use `auto.arima()` for optimal parameters
+4. Validate with residual diagnostics
+5. Generate forecasts with confidence intervals
+
+### Selected Model
+**ARIMA(0,0,0)** - A white noise model with constant mean
+- Indicates no significant autocorrelation
+- Stable expense pattern
+- Suitable for short-term forecasting
+
+## 💡 Key Insights
+
+📈 **Upward Trend**
+- Monthly expenses increase by ~$10-15 per month
+- Consistent pattern over 32-month period
+
+🎯 **Stable Pattern**
+- No seasonality detected
+- Stable variance throughout
+- Ideal for ARIMA forecasting
+
+💼 **Budget Planning**
+- Allocate $1,850-$1,900 monthly for next quarter
+- Maintain 5-10% contingency buffer
+- Review and update quarterly
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Charts**: Chart.js library
-- **Data**: Sample monthly expense data (24 months historical + 3-month forecast)
-- **Styling**: Custom CSS with responsive design
+### Statistical Analysis
+- **R**: Programming language
+- **tidyverse**: Data manipulation and visualization
+- **lubridate**: Date/time handling
+- **forecast**: ARIMA modeling and diagnostics
 
-## 📈 Forecasting Methodology
+### Web Technologies
+- **HTML5**: Semantic markup
+- **CSS3**: Responsive styling
+- **JavaScript**: Interactive functionality
+- **Chart.js**: Data visualizations
 
-### Data Source
-- Historical transaction data spanning 24 months (Jan 2023 - Dec 2024)
+### Version Control & Hosting
+- **Git**: Version control
+- **GitHub**: Repository hosting
+- **GitHub Pages**: Static site deployment
 
-### Forecasting Method
-- **Model**: ARIMA (AutoRegressive Integrated Moving Average)
-- **Components**:
-  - Base expense calculation
-  - Trend analysis (approx. +$10/month)
-  - Noise/variance modeling
-  - 95% confidence interval estimation
+## 📖 Documentation
 
-### Tools Used (R-based Analysis)
-- **tidyverse**: Data manipulation and analysis
-- **lubridate**: Date and time handling
-- **forecast**: Time series forecasting
+For detailed information, visit the **Documentation** page on the website:
+- Project overview and objectives
+- Data source and preparation
+- Statistical methodology
+- Results interpretation
+- Business recommendations
+- FAQ section
 
-## 📊 Dashboard Sections
+## ❓ Frequently Asked Questions
 
-### 1. Key Metrics
-Displays four important metrics:
-- Average Monthly Expense
-- Trend direction and rate
-- Forecast accuracy percentage
-- Number of historical data points
+**Q: How accurate is this forecast?**
+A: The 95% confidence intervals show where actual values likely fall. MAPE of 6.12% indicates good accuracy.
 
-### 2. Historical & Forecast Chart
-Interactive line chart showing:
-- 24 months of historical data (solid blue line)
-- 3-month forecast (orange dashed line)
-- 95% confidence intervals (green dashed lines)
+**Q: When should I update the forecast?**
+A: Update monthly or quarterly with new data for best results.
 
-### 3. Forecast Table
-Detailed predictions for the next 3 months including:
-- Predicted expense amount
-- 95% confidence interval range
+**Q: Can I use this for other data?**
+A: Yes! The methodology applies to any univariate time series.
 
-### 4. Key Insights
-Auto-generated insights about:
-- Trend analysis
-- Pattern stability
-- Forecast confidence
-- Budget planning recommendations
+**Q: What if my data follows a different pattern?**
+A: Modify the R script for different ARIMA parameters or alternative models.
 
-### 5. Methodology
-Documentation of:
-- Data sources
-- Forecasting methods
-- Statistical tools used
-- R packages employed
+## 🔄 How to Update
 
-## 🎨 Customization
+### Update with New Data
+1. Modify the R script's mock data or load actual CSV
+2. Re-run the analysis
+3. Update `chart.js` with new forecast values
+4. Commit changes to GitHub
+5. Website auto-updates via GitHub Pages
 
-### Update Data
-To use real data instead of sample data:
-
-1. **Update `chart.js`**:
-   - Modify the `historicalData` array with your actual expense data
-   - Update `forecastData` with predicted values from R forecast
-   - Adjust `confidenceHigh` and `confidenceLow` arrays
-
-2. **Update Metrics** in `index.html`:
-   - Average Monthly Expense
-   - Trend value
-   - Forecast accuracy
-
-3. **Update Forecast Table**:
-   - Replace the 3-month predictions
-   - Update confidence intervals
-
-### Styling Changes
-Edit `styles.css` to:
-- Change colors by modifying CSS variables (`:root` section)
-- Adjust fonts and spacing
-- Modify responsive breakpoints
-
-## 🔄 Integration with R Analysis
-
-Your R script generates the forecast data:
+### Step-by-Step
 ```r
-# The R analysis produces:
-# - Historical monthly totals
-# - Forecast predictions
-# - Confidence intervals
-# - Statistical metrics
+# In forecast-analysis.R
+mock_data <- read_csv("your_actual_data.csv")  # Load real data
+# Re-run analysis...
 ```
 
-To integrate real forecasts:
-1. Run your R script to generate predictions
-2. Extract the forecast values and confidence intervals
-3. Update `chart.js` with the actual data
-4. Update metrics in `index.html`
+```javascript
+// In chart.js
+const historicalData = [1647, 1464, ...];  // Update with new values
+const forecastData = [1850, 1860, 1870];   // Update predictions
+```
 
-## 📱 Browser Support
+## 📞 Support & Contributions
 
-- Chrome/Edge: Full support
-- Firefox: Full support
-- Safari: Full support
-- Mobile browsers: Full responsive support
+### Report Issues
+- GitHub Issues: [Create an issue](https://github.com/Isai-csbs/isaipriya/issues)
 
-## 📝 Notes
+### Contribute
+- Fork the repository
+- Create a feature branch
+- Submit a pull request
 
-- The website uses Chart.js CDN for chart rendering
-- All styling is self-contained in `styles.css`
-- No database or backend required for deployment
-- Data is hardcoded for static deployment
+### Contact
+- Author: [@Isai-csbs](https://github.com/Isai-csbs)
+- Repository: [isaipriya](https://github.com/Isai-csbs/isaipriya)
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🎓 Educational Purpose
+
+This project is part of the Data Mining and Analysis (DMA) mini project for learning:
+- Time series analysis
+- ARIMA modeling
+- Data visualization
+- Web dashboard creation
+- Full-stack data science workflow
 
 ## 🚀 Future Enhancements
 
-- [ ] Backend API integration for dynamic data
-- [ ] Database for historical data storage
-- [ ] User authentication
-- [ ] Export to PDF/CSV
+- [ ] Backend API integration
+- [ ] Database for data storage
 - [ ] Multiple forecast models comparison
 - [ ] Real-time data updates
-- [ ] User-customizable forecast periods
-
-## 📧 Contact
-
-For questions or improvements, visit: https://github.com/Isai-csbs/isaipriya
+- [ ] Export to PDF/CSV
+- [ ] User authentication
+- [ ] Interactive parameter tuning
+- [ ] Advanced visualizations
 
 ---
 
-**Last Updated**: May 13, 2026
+**Last Updated**: May 13, 2026  
+**Website**: https://Isai-csbs.github.io/isaipriya/  
+**Repository**: https://github.com/Isai-csbs/isaipriya

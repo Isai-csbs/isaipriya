@@ -3,7 +3,9 @@
     --secondary-color: #1e40af;
     --success-color: #10b981;
     --warning-color: #f59e0b;
+    --danger-color: #ef4444;
     --text-color: #1f2937;
+    --text-light: #6b7280;
     --bg-color: #f9fafb;
     --card-bg: #ffffff;
     --border-color: #e5e7eb;
@@ -30,8 +32,49 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
-header {
+/* Navigation Bar */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Header / Hero Section */
+header.hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     padding: 60px 0;
@@ -40,8 +83,21 @@ header {
     box-shadow: var(--shadow-lg);
 }
 
-header h1 {
+header.hero h1 {
     font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header.page-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header.page-header h1 {
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
@@ -55,20 +111,67 @@ main {
     margin-bottom: 40px;
 }
 
-/* Metrics Grid */
+/* Intro Section */
+.intro-section {
+    margin-bottom: 40px;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.intro-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.intro-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.intro-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Metrics Section */
+.metrics-section,
+.metrics-grid {
+    margin-bottom: 40px;
+}
+
+.metrics-section h2 {
+    margin-bottom: 25px;
+    color: var(--text-color);
+    font-size: 1.8em;
+}
+
 .metrics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin-bottom: 40px;
 }
 
 .metric-card {
     background: var(--card-bg);
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     box-shadow: var(--shadow);
-    border-left: 4px solid var(--primary-color);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -79,7 +182,7 @@ main {
 
 .metric-card h3 {
     font-size: 0.9em;
-    color: #6b7280;
+    color: var(--text-light);
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -89,28 +192,12 @@ main {
     font-size: 2em;
     font-weight: bold;
     color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
-.metric-value.positive {
-    color: var(--success-color);
-}
-
-/* Chart Container */
-.chart-container {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    margin-bottom: 40px;
-}
-
-.chart-container h2 {
-    margin-bottom: 20px;
-    color: var(--text-color);
-}
-
-.chart-container canvas {
-    max-height: 400px;
+.metric-detail {
+    font-size: 0.9em;
+    color: var(--text-light);
 }
 
 /* Forecast Section */
@@ -124,6 +211,10 @@ main {
 
 .forecast-section h2 {
     margin-bottom: 20px;
+}
+
+.forecast-container {
+    overflow-x: auto;
 }
 
 .forecast-table {
@@ -152,67 +243,377 @@ main {
     background-color: #f0f9ff;
 }
 
-/* Insights Section */
-.insights-section {
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.badge-primary {
+    background-color: #dbeafe;
+    color: var(--primary-color);
+}
+
+.badge-success {
+    background-color: #dcfce7;
+    color: var(--success-color);
+}
+
+/* Chart Container */
+.chart-container {
     background: var(--card-bg);
     padding: 30px;
     border-radius: 8px;
     box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.chart-container h2 {
+    margin-bottom: 10px;
+}
+
+.chart-description {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.chart-container canvas {
+    max-height: 400px;
+}
+
+/* Insights Section */
+.insights-section,
+.insights-grid {
     margin-bottom: 40px;
 }
 
 .insights-section h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.insights-list {
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.insight-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--success-color);
+}
+
+.insight-card h3 {
+    color: var(--success-color);
+    margin-bottom: 10px;
+}
+
+.insight-card p {
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cta-section h2 {
+    margin-bottom: 30px;
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cta-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-icon {
+    font-size: 2em;
+}
+
+.cta-button span:last-child {
+    font-weight: 600;
+}
+
+/* Statistics Section */
+.stats-section {
+    margin-bottom: 40px;
+}
+
+.stats-section h2 {
+    margin-bottom: 25px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--warning-color);
+}
+
+.stat-box h3 {
+    color: var(--warning-color);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.stat-box ul {
     list-style: none;
 }
 
-.insights-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-color);
-    padding-left: 0;
+.stat-box li {
+    padding: 5px 0;
+    color: var(--text-light);
+    font-size: 0.95em;
 }
 
-.insights-list li:last-child {
-    border-bottom: none;
-}
-
-.insights-list strong {
-    color: var(--primary-color);
-}
-
-/* Methodology Section */
-.methodology-section {
+/* Forecast Details Section */
+.forecast-details-section {
     background: var(--card-bg);
     padding: 30px;
     border-radius: 8px;
     box-shadow: var(--shadow);
     margin-bottom: 40px;
+    overflow-x: auto;
 }
 
-.methodology-section h2 {
+.forecast-details-section h2 {
     margin-bottom: 20px;
 }
 
-.methodology-content h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.methodology-content ul {
+.details-table th {
+    background-color: var(--bg-color);
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.details-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.details-table tbody tr:hover {
+    background-color: #f0f9ff;
+}
+
+/* Diagnostics Section */
+.diagnostics-section {
+    margin-bottom: 40px;
+}
+
+.diagnostics-section h2 {
+    margin-bottom: 25px;
+}
+
+.diagnostics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.diagnostic-box {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+}
+
+.diagnostic-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.diagnostic-box ul {
+    list-style: none;
+}
+
+.diagnostic-box li {
+    padding: 8px 0;
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+    margin-bottom: 40px;
+}
+
+.recommendations-section h2 {
+    margin-bottom: 25px;
+}
+
+.recommendations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.recommendation-item {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--success-color);
+}
+
+.recommendation-item h3 {
+    color: var(--success-color);
+    margin-bottom: 10px;
+}
+
+.recommendation-item p {
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* Documentation Content */
+.documentation-content {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.doc-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.doc-section:last-child {
+    border-bottom: none;
+}
+
+.doc-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.doc-section h3 {
+    color: var(--secondary-color);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.doc-section p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.doc-section ul,
+.doc-section ol {
     margin-left: 20px;
     margin-bottom: 15px;
 }
 
-.methodology-content li {
+.doc-section li {
     margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.info-box {
+    background-color: #eff6ff;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.info-box strong {
+    color: var(--primary-color);
+}
+
+.info-box ul {
+    margin: 10px 0 0 20px;
+}
+
+.faq-item {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--warning-color);
+}
+
+.faq-item h3 {
+    color: var(--warning-color);
+    font-size: 1.05em;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: var(--text-color);
+}
+
+/* Back Button */
+.back-section {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Footer */
-footer {
+.footer {
     background-color: var(--text-color);
     color: white;
     text-align: center;
@@ -221,33 +622,45 @@ footer {
     border-top: 4px solid var(--primary-color);
 }
 
-footer a {
+.footer a {
     color: var(--primary-color);
     text-decoration: none;
 }
 
-footer a:hover {
+.footer a:hover {
     text-decoration: underline;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header h1 {
+    header.hero h1,
+    header.page-header h1 {
         font-size: 1.8em;
     }
 
-    .metrics-grid {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9em;
+    }
+
+    .metrics-grid,
+    .intro-grid,
+    .insights-grid,
+    .stats-grid,
+    .diagnostics-grid,
+    .recommendations-list,
+    .cta-grid {
         grid-template-columns: 1fr;
     }
 
     .chart-container,
     .forecast-section,
-    .insights-section,
-    .methodology-section {
+    .documentation-content {
         padding: 20px;
     }
 
-    .forecast-table {
+    .forecast-table,
+    .details-table {
         font-size: 0.9em;
     }
 }
@@ -257,15 +670,30 @@ footer a:hover {
         padding: 0 10px;
     }
 
-    header {
-        padding: 40px 0;
+    header.hero,
+    header.page-header {
+        padding: 30px 0;
     }
 
-    header h1 {
+    header.hero h1,
+    header.page-header h1 {
         font-size: 1.5em;
     }
 
     .subtitle {
-        font-size: 1em;
+        font-size: 0.95em;
+    }
+
+    .nav-brand {
+        font-size: 1.2em;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+        font-size: 0.8em;
+    }
+
+    .documentation-content {
+        padding: 20px;
     }
 }

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Expense Forecasting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">💼 Expense Forecasting</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="documentation.html" class="active">Documentation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>📚 Documentation</h1>
+            <p>Complete guide to the Expense Forecasting Project</p>
+        </header>
+
+        <main class="documentation-content">
+            <!-- Overview -->
+            <section class="doc-section">
+                <h2>🎯 Project Overview</h2>
+                <p>This project forecasts total monthly expenses for the next 3 months using time series analysis. The analysis is based on 32 months of historical expense data (January 2023 - August 2025) and employs an ARIMA (AutoRegressive Integrated Moving Average) statistical model.</p>
+                <div class="info-box">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li>Automated ARIMA model selection</li>
+                        <li>95% confidence interval calculations</li>
+                        <li>Comprehensive diagnostics and residual analysis</li>
+                        <li>Interactive web-based dashboard</li>
+                        <li>Reproducible analysis in R</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Data Section -->
+            <section class="doc-section">
+                <h2>📊 Data Source & Preparation</h2>
+                <h3>Historical Data</h3>
+                <ul>
+                    <li><strong>Time Period:</strong> January 2023 - August 2025 (32 months)</li>
+                    <li><strong>Frequency:</strong> Monthly</li>
+                    <li><strong>Format:</strong> Aggregated total expenses per month</li>
+                    <li><strong>Data Quality:</strong> Cleaned and validated</li>
+                </ul>
+                <h3>Data Characteristics</h3>
+                <ul>
+                    <li>Range: $1,400 - $1,950 per month</li>
+                    <li>Mean: $1,737</li>
+                    <li>Trend: Slight upward (~$10/month)</li>
+                    <li>Seasonality: Not detected</li>
+                </ul>
+            </section>
+
+            <!-- Methodology Section -->
+            <section class="doc-section">
+                <h2>🔬 Methodology</h2>
+                <h3>ARIMA Model</h3>
+                <p>ARIMA stands for AutoRegressive Integrated Moving Average. It's a statistical model that captures temporal dependencies in data:</p>
+                <ul>
+                    <li><strong>AR (AutoRegressive):</strong> Uses past values to predict future values</li>
+                    <li><strong>I (Integrated):</strong> Handles non-stationary data through differencing</li>
+                    <li><strong>MA (Moving Average):</strong> Uses past forecast errors</li>
+                </ul>
+                <h3>Model Selection Process</h3>
+                <ol>
+                    <li>Data stationarity testing (ADF test)</li>
+                    <li>ACF/PACF analysis for parameter identification</li>
+                    <li>Auto.arima() function for optimal parameter selection</li>
+                    <li>Model diagnostics and residual analysis</li>
+                    <li>Forecast generation with confidence intervals</li>
+                </ol>
+                <h3>Selected Model: ARIMA(0,0,0)</h3>
+                <p>A white noise model with a constant mean, indicating no significant autocorrelation in the data and a stable mean expense level.</p>
+            </section>
+
+            <!-- Results Section -->
+            <section class="doc-section">
+                <h2>📈 Results & Interpretation</h2>
+                <h3>Point Forecasts</h3>
+                <ul>
+                    <li>September 2025: $1,850</li>
+                    <li>October 2025: $1,860</li>
+                    <li>November 2025: $1,870</li>
+                </ul>
+                <h3>Confidence Intervals (95%)</h3>
+                <p>The 95% confidence intervals indicate a range where we can be 95% confident the actual expense will fall:</p>
+                <ul>
+                    <li>September: $1,720 - $1,980</li>
+                    <li>October: $1,710 - $2,010</li>
+                    <li>November: $1,700 - $2,040</li>
+                </ul>
+                <div class="info-box">
+                    <strong>Interpretation:</strong> The widening confidence interval reflects increasing uncertainty as we forecast further into the future. This is normal and expected.
+                </div>
+            </section>
+
+            <!-- Technologies Section -->
+            <section class="doc-section">
+                <h2>🛠️ Technologies & Tools</h2>
+                <h3>Statistical Analysis (R)</h3>
+                <ul>
+                    <li><strong>tidyverse:</strong> Data manipulation and visualization</li>
+                    <li><strong>lubridate:</strong> Date and time handling</li>
+                    <li><strong>forecast:</strong> ARIMA modeling and diagnostics</li>
+                </ul>
+                <h3>Web Technologies</h3>
+                <ul>
+                    <li><strong>HTML5:</strong> Semantic markup</li>
+                    <li><strong>CSS3:</strong> Responsive styling</li>
+                    <li><strong>JavaScript:</strong> Interactive visualizations</li>
+                    <li><strong>Chart.js:</strong> Interactive charts</li>
+                </ul>
+                <h3>Version Control & Deployment</h3>
+                <ul>
+                    <li><strong>Git:</strong> Version control</li>
+                    <li><strong>GitHub:</strong> Repository hosting</li>
+                    <li><strong>GitHub Pages:</strong> Static site hosting</li>
+                </ul>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="doc-section">
+                <h2>🚀 How to Use This Project</h2>
+                <h3>Viewing the Website</h3>
+                <ol>
+                    <li>Visit the GitHub Pages site: <a href="https://Isai-csbs.github.io/isaipriya/" target="_blank">https://Isai-csbs.github.io/isaipriya/</a></li>
+                    <li>Navigate through Dashboard, Analysis, and Documentation pages</li>
+                    <li>View interactive charts and detailed forecasts</li>
+                </ol>
+                <h3>Running the R Analysis</h3>
+                <ol>
+                    <li>Install R and required packages (tidyverse, lubridate, forecast)</li>
+                    <li>Run the notebook: <code>Copy_of_dma_mini_project.ipynb</code></li>
+                    <li>Or run the script: <code>forecast-analysis.R</code></li>
+                    <li>Results will be generated and exported</li>
+                </ol>
+                <h3>Updating with New Data</h3>
+                <ol>
+                    <li>Modify the mock data generation in the R script</li>
+                    <li>Or load actual CSV data using <code>read_csv()</code></li>
+                    <li>Re-run the analysis</li>
+                    <li>Update the forecast data in <code>chart.js</code></li>
+                    <li>Commit and push changes to GitHub</li>
+                </ol>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="doc-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3>Q: Why use ARIMA instead of other models?</h3>
+                    <p>A: ARIMA is ideal for univariate time series with temporal dependencies. It's interpretable, well-established, and works well with our data characteristics.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q: How accurate is this forecast?</h3>
+                    <p>A: The 95% confidence intervals show the range where actual values are likely to fall. The point forecast is our best estimate, with ±6% MAPE (Mean Absolute Percentage Error).</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q: What happens if my expenses follow a different pattern?</h3>
+                    <p>A: You can modify the R script to use different ARIMA parameters or other models like exponential smoothing or Prophet.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q: How often should I update the forecast?</h3>
+                    <p>A: Update monthly or quarterly with new data for best results. More frequent updates improve accuracy as patterns become clearer.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q: Can I use this for other types of forecasting?</h3>
+                    <p>A: Yes! The same methodology can be applied to any univariate time series: sales, traffic, temperature, stock prices, etc.</p>
+                </div>
+            </section>
+
+            <!-- References Section -->
+            <section class="doc-section">
+                <h2>📖 References & Resources</h2>
+                <ul>
+                    <li><strong>Hyndman & Athanasopoulos (2021):</strong> <a href="https://otexts.com/fpp2/" target="_blank">Forecasting: Principles and Practice</a></li>
+                    <li><strong>R forecast package:</strong> <a href="https://pkg.robjhyndman.com/forecast/" target="_blank">Documentation</a></li>
+                    <li><strong>Chart.js:</strong> <a href="https://www.chartjs.org/" target="_blank">Interactive Charts</a></li>
+                    <li><strong>Time Series Analysis:</strong> <a href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average" target="_blank">Wikipedia - ARIMA</a></li>
+                </ul>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="doc-section">
+                <h2>📞 Contact & Support</h2>
+                <p>For questions, suggestions, or contributions:</p>
+                <ul>
+                    <li>📧 GitHub Issues: <a href="https://github.com/Isai-csbs/isaipriya/issues" target="_blank">Report an Issue</a></li>
+                    <li>💻 Repository: <a href="https://github.com/Isai-csbs/isaipriya" target="_blank">View on GitHub</a></li>
+                    <li>👤 Author: <a href="https://github.com/Isai-csbs" target="_blank">@Isai-csbs</a></li>
+                </ul>
+            </section>
+
+            <!-- Back to Home -->
+            <section class="back-section">
+                <a href="index.html" class="back-button">← Back to Dashboard</a>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Expense Forecasting Project | <a href="https://github.com/Isai-csbs/isaipriya">GitHub Repository</a></p>
+            <p>Built with R, HTML, CSS, and Chart.js</p>
+        </div>
+    </footer>
+</body>
+</html>

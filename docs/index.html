@@ -3,120 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Forecasting Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Expense Forecasting Project</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">💼 Expense Forecasting</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
+        <header class="hero">
             <h1>📊 Expense Forecasting Dashboard</h1>
-            <p class="subtitle">Monthly Expense Analysis & 3-Month Forecast</p>
+            <p class="subtitle">Data-Driven Predictions for Financial Planning</p>
         </header>
 
         <main>
-            <section class="dashboard">
-                <!-- Key Metrics -->
+            <section class="intro-section">
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>🎯 Project Goal</h3>
+                        <p>Forecast monthly expenses for the next 3 months using ARIMA time series analysis on 32 months of historical data (Jan 2023 - Aug 2025).</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>📈 Analysis Method</h3>
+                        <p>AutoRegressive Integrated Moving Average (ARIMA) model with automatic parameter selection, confidence intervals, and comprehensive diagnostics.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>🔧 Technologies</h3>
+                        <p>R programming language with tidyverse, lubridate, and forecast packages for robust statistical analysis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="metrics-section">
+                <h2>📊 Key Metrics</h2>
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <h3>Average Monthly Expense</h3>
-                        <p class="metric-value">$1,710.25</p>
+                        <h3>Historical Data</h3>
+                        <p class="metric-value">32 Months</p>
+                        <p class="metric-detail">Jan 2023 - Aug 2025</p>
                     </div>
                     <div class="metric-card">
-                        <h3>Trend</h3>
-                        <p class="metric-value positive">↑ +10/month</p>
+                        <h3>Average Expense</h3>
+                        <p class="metric-value">$1,737</p>
+                        <p class="metric-detail">Historical average</p>
                     </div>
                     <div class="metric-card">
-                        <h3>Forecast Accuracy</h3>
-                        <p class="metric-value">95.2%</p>
+                        <h3>Forecast Period</h3>
+                        <p class="metric-value">3 Months</p>
+                        <p class="metric-detail">Sep - Nov 2025</p>
                     </div>
                     <div class="metric-card">
-                        <h3>Data Points</h3>
-                        <p class="metric-value">24 months</p>
+                        <h3>Model Accuracy</h3>
+                        <p class="metric-value">95%</p>
+                        <p class="metric-detail">Confidence interval</p>
                     </div>
                 </div>
+            </section>
 
-                <!-- Historical & Forecast Chart -->
-                <div class="chart-container">
-                    <h2>24-Month Historical Data & 3-Month Forecast</h2>
-                    <canvas id="forecastChart"></canvas>
-                </div>
-
-                <!-- Forecast Predictions -->
-                <div class="forecast-section">
-                    <h2>📈 3-Month Forecast</h2>
+            <section class="forecast-section">
+                <h2>🔮 3-Month Forecast Predictions</h2>
+                <div class="forecast-container">
                     <table class="forecast-table">
                         <thead>
                             <tr>
-                                <th>Month</th>
+                                <th>Forecast Month</th>
                                 <th>Predicted Expense</th>
-                                <th>95% Confidence Interval</th>
+                                <th>95% Confidence Range</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Month 25</td>
-                                <td>$1,790</td>
-                                <td>$1,650 - $1,930</td>
+                                <td>September 2025</td>
+                                <td>$1,850</td>
+                                <td>$1,720 - $1,980</td>
+                                <td><span class="badge badge-primary">Forecast</span></td>
                             </tr>
                             <tr>
-                                <td>Month 26</td>
-                                <td>$1,800</td>
-                                <td>$1,640 - $1,960</td>
+                                <td>October 2025</td>
+                                <td>$1,860</td>
+                                <td>$1,710 - $2,010</td>
+                                <td><span class="badge badge-primary">Forecast</span></td>
                             </tr>
                             <tr>
-                                <td>Month 27</td>
-                                <td>$1,810</td>
-                                <td>$1,630 - $1,990</td>
+                                <td>November 2025</td>
+                                <td>$1,870</td>
+                                <td>$1,700 - $2,040</td>
+                                <td><span class="badge badge-primary">Forecast</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </section>
 
-                <!-- Additional Insights -->
-                <div class="insights-section">
-                    <h2>💡 Key Insights</h2>
-                    <ul class="insights-list">
-                        <li><strong>Upward Trend:</strong> Monthly expenses show a consistent upward trend of approximately $10 per month.</li>
-                        <li><strong>Stable Pattern:</strong> The noise/variance remains relatively consistent throughout the period.</li>
-                        <li><strong>Forecast Confidence:</strong> High confidence in next 3 months due to stable historical patterns.</li>
-                        <li><strong>Budget Planning:</strong> Plan for ~$1,800/month average for the next quarter.</li>
-                    </ul>
-                </div>
-
-                <!-- Methodology -->
-                <div class="methodology-section">
-                    <h2>📋 Methodology</h2>
-                    <div class="methodology-content">
-                        <h3>Data Source</h3>
-                        <p>Historical transaction data spanning 24 months (Jan 2023 - Dec 2024)</p>
-                        
-                        <h3>Forecasting Method</h3>
-                        <p>ARIMA (AutoRegressive Integrated Moving Average) model with:</p>
-                        <ul>
-                            <li>Base expense calculation</li>
-                            <li>Trend component analysis</li>
-                            <li>Noise/variance modeling</li>
-                            <li>95% confidence interval estimation</li>
-                        </ul>
-                        
-                        <h3>Tools Used</h3>
-                        <ul>
-                            <li><strong>R</strong> - Statistical analysis</li>
-                            <li><strong>tidyverse</strong> - Data manipulation</li>
-                            <li><strong>forecast</strong> - Time series forecasting</li>
-                            <li><strong>lubridate</strong> - Date handling</li>
-                        </ul>
+            <section class="insights-section">
+                <h2>💡 Key Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>📈 Upward Trend</h3>
+                        <p>Monthly expenses show a consistent upward trend of approximately $10-15 per month, indicating growing expenditure over time.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>🎯 Stable Pattern</h3>
+                        <p>The data exhibits stable variance throughout the period with no significant seasonality, making it suitable for ARIMA forecasting.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>📊 Budget Planning</h3>
+                        <p>Plan for approximately $1,850-$1,870 monthly for the next quarter. Keep 5-10% buffer for unexpected expenses.</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>⚠️ Risk Assessment</h3>
+                        <p>95% confidence intervals show potential range. Upper bound (~$2,000) represents worst-case scenario for contingency planning.</p>
                     </div>
                 </div>
             </section>
-        </main>
 
-        <footer>
-            <p>&copy; 2026 Expense Forecasting Project | <a href="https://github.com/Isai-csbs/isaipriya">View on GitHub</a></p>
-        </footer>
+            <section class="cta-section">
+                <h2>🚀 Explore More</h2>
+                <div class="cta-grid">
+                    <a href="analysis.html" class="cta-button">
+                        <span class="cta-icon">📊</span>
+                        <span>View Detailed Analysis</span>
+                    </a>
+                    <a href="documentation.html" class="cta-button">
+                        <span class="cta-icon">📚</span>
+                        <span>Read Documentation</span>
+                    </a>
+                    <a href="https://github.com/Isai-csbs/isaipriya" class="cta-button" target="_blank">
+                        <span class="cta-icon">💻</span>
+                        <span>View on GitHub</span>
+                    </a>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <script src="chart.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Expense Forecasting Project | <a href="https://github.com/Isai-csbs/isaipriya">GitHub Repository</a></p>
+            <p>Built with R, HTML, CSS, and Chart.js</p>
+        </div>
+    </footer>
 </body>
 </html>

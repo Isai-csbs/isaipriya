@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Analysis - Expense Forecasting</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">💼 Expense Forecasting</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="analysis.html" class="active">Analysis</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>📊 Detailed Analysis & Visualizations</h1>
+            <p>32-Month Historical Data with 3-Month Forecast</p>
+        </header>
+
+        <main>
+            <!-- Historical & Forecast Chart -->
+            <section class="analysis-section">
+                <div class="chart-container">
+                    <h2>Historical Expenses & Forecast</h2>
+                    <p class="chart-description">24 months of historical data (blue line) with 3-month forecast (orange dashed line) and 95% confidence intervals (shaded area)</p>
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <h2>📈 Statistical Summary</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <h3>Model: ARIMA(0,0,0)</h3>
+                        <ul>
+                            <li><strong>Mean:</strong> $1,637</li>
+                            <li><strong>Std Error:</strong> $24.98</li>
+                            <li><strong>Sigma²:</strong> 15,632</li>
+                        </ul>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Accuracy Metrics</h3>
+                        <ul>
+                            <li><strong>RMSE:</strong> $122.39</li>
+                            <li><strong>MAE:</strong> $99.79</li>
+                            <li><strong>MAPE:</strong> 6.12%</li>
+                        </ul>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Information Criteria</h3>
+                        <ul>
+                            <li><strong>AIC:</strong> 302.86</li>
+                            <li><strong>AICc:</strong> 303.43</li>
+                            <li><strong>BIC:</strong> 305.21</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forecast Details -->
+            <section class="forecast-details-section">
+                <h2>🔮 Forecast Details with Confidence Intervals</h2>
+                <div class="details-container">
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Point Forecast</th>
+                                <th>80% Lower</th>
+                                <th>80% Upper</th>
+                                <th>95% Lower</th>
+                                <th>95% Upper</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>January 2025</td>
+                                <td>$1,637</td>
+                                <td>$1,476</td>
+                                <td>$1,797</td>
+                                <td>$1,392</td>
+                                <td>$1,882</td>
+                            </tr>
+                            <tr>
+                                <td>February 2025</td>
+                                <td>$1,637</td>
+                                <td>$1,476</td>
+                                <td>$1,797</td>
+                                <td>$1,392</td>
+                                <td>$1,882</td>
+                            </tr>
+                            <tr>
+                                <td>March 2025</td>
+                                <td>$1,637</td>
+                                <td>$1,476</td>
+                                <td>$1,797</td>
+                                <td>$1,392</td>
+                                <td>$1,882</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Diagnostic Plots -->
+            <section class="diagnostics-section">
+                <h2>🔍 Model Diagnostics</h2>
+                <div class="diagnostics-grid">
+                    <div class="diagnostic-box">
+                        <h3>Residual Analysis</h3>
+                        <ul>
+                            <li>Mean Error (ME): -0.0000 (excellent)</li>
+                            <li>ACF1: -0.0068 (no autocorrelation)</li>
+                            <li>Ljung-Box p-value: 0.6297 (stationary)</li>
+                        </ul>
+                    </div>
+                    <div class="diagnostic-box">
+                        <h3>Model Performance</h3>
+                        <ul>
+                            <li>Training MASE: 0.8415</li>
+                            <li>No trend detected</li>
+                            <li>Stable variance confirmed</li>
+                        </ul>
+                    </div>
+                    <div class="diagnostic-box">
+                        <h3>Data Characteristics</h3>
+                        <ul>
+                            <li>No seasonality</li>
+                            <li>Stationary series</li>
+                            <li>Normal distribution</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="recommendations-section">
+                <h2>💼 Business Recommendations</h2>
+                <div class="recommendations-list">
+                    <div class="recommendation-item">
+                        <h3>✅ Budget Allocation</h3>
+                        <p>Allocate $1,850-$1,900 monthly for the next quarter based on forecast predictions. This includes a 5-10% safety margin above the point forecast.</p>
+                    </div>
+                    <div class="recommendation-item">
+                        <h3>📊 Monitoring Strategy</h3>
+                        <p>Review actual expenses monthly and compare against forecasts. Update the model quarterly with new data for improved accuracy.</p>
+                    </div>
+                    <div class="recommendation-item">
+                        <h3>⚠️ Risk Mitigation</h3>
+                        <p>Maintain a contingency reserve equal to the upper 95% confidence bound (~$1,900-$2,000) for unexpected expenses.</p>
+                    </div>
+                    <div class="recommendation-item">
+                        <h3>🔄 Model Updates</h3>
+                        <p>Re-run ARIMA analysis every 3-6 months with accumulated new data to track trend changes and improve forecast accuracy.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Back to Home -->
+            <section class="back-section">
+                <a href="index.html" class="back-button">← Back to Dashboard</a>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Expense Forecasting Project | <a href="https://github.com/Isai-csbs/isaipriya">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="chart.js"></script>
+</body>
+</html>
